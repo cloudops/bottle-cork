@@ -687,7 +687,7 @@ class User(object):
             except:
                 pass
 
-    def update(self, role=None, pwd=None, email_addr=None):
+    def update(self, role=None, pwd=None, email_addr=None, description=None):
         """Update an user account data
 
         :param role: change user role, if specified
@@ -714,6 +714,9 @@ class User(object):
 
         if email_addr is not None:
             self._cork._store.users[username]['email_addr'] = email_addr
+
+        if description is not None:
+            self._cork._store.users[username]['desc'] = description
 
         self._cork._store.save_users()
 
